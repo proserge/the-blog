@@ -1,0 +1,16 @@
+<article class="blog">
+  <section class="blog-head">
+    <h1><%= @blog.name %></h1>
+    <small>
+      <time><%= @blog.created_at.to_date.strftime("%d %B, %Y") %></time>
+      <% if owner?(@blog) %>
+        |
+        <%= link_to 'Edit', edit_blog_path(@blog) %>
+        |
+        <%= link_to 'Erase', blog_path(@blog), method: :delete, data: {confirm: 'Are you sure?'} %>
+      <% end %>
+    </small>
+    <%= render @blog.posts %>
+  </section>
+    
+</article>
