@@ -78,8 +78,8 @@ Rails.application.configure do
     :port => 587,
     :authentication => :plain,   # I've also tried :login
     :enable_starttls_auto => true,  # Also tried tls => true
-    :user_name => 'noreply4831@gmail.com',
-    :password => 't3stp4ss'
+    user_name: "#{ENV['EMAIL_USER']}",
+    password: "#{ENV['EMAIL_PASS']}",
   }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
