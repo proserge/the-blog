@@ -3,12 +3,12 @@
     <h1><%= @post.title %></h1>
     <small>
       <time><%= @post.created_at.to_date.strftime("%d %B, %Y") %></time>
-      <%# if owner?(@post) %>
+      <% if owner?(@post.blog) %>
         |
         <%= link_to 'Edit', edit_post_path(@post) %>
         |
         <%= link_to 'Erase', post_path(@post), method: :delete, data: {confirm: 'Are you sure?'} %>
-      <%# end %>
+      <% end %>
     </small>
   <!--/section-->
     
