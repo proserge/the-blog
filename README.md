@@ -15,4 +15,4 @@ Technologies that I used:
 * PostgreSQL for database;
 * Devise for user authentication;
 * Bootstrap 4 for better front-end creation;
-* Heroku for production. Here is the link on working app: [the-blog] (https://the-blog-2.herokuapp.com). It could take some time to load, please wait.
+* Heroku for production. Here is the link on working app: https://the-blog-2.herokuapp.com. It could take some time to load, please wait.
