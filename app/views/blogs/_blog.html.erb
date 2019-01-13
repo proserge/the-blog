@@ -8,6 +8,9 @@
         <%= link_to 'Edit', edit_blog_path(blog) %>
         |
         <%= link_to 'Erase', blog_path(blog), method: :delete, data: {confirm: 'Are you sure?'} %>
+      <% else %>
+         by 
+        <%= blog.user.username %> 
       <% end %>
     </small>
   </section>

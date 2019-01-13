@@ -6,6 +6,8 @@
     <time><%= post.created_at.to_date.strftime("%d %B, %Y") %></time>
     |
     <%= link_to post.blog.name, post.blog %>
+     by 
+    <%= post.blog.user.username %>
     <%# if owner?(post.blog) %>
       
       <%#= link_to 'Edit', edit_blog_path(post.blog) %>
