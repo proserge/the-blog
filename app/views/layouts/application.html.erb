@@ -24,7 +24,7 @@
 
           <% if user_has_blog? %>
             <a class="nav-item nav-link" href="<%= blog_path(current_user.blog) %>">My Blog</a>
-            <a class="nav-item nav-link" href="<%= new_blog_post_path(current_user.blog.id) %>">Add Post</a>
+            <a class="nav-item nav-link" href="<%= new_post_path %>">Add Post</a>
           <% else %>
             <a class="nav-item nav-link" href="<%= new_blog_path %>">Create Blog</a>
           <% end %>

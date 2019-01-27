@@ -14,7 +14,27 @@
     
   <!--section class="post-body"-->
   <p>
-    <%= @post.body %>
+    <%= simple_format(@post.body) %>
   </p>
+  <hr>
+  <%= link_to "Add Comment", new_post_comment_path(post_id: @post.id) %>
+  <% if @post.comments.size != 0 %>
+    <h4>Comments  (<%= @post.comments.size %>)</h4>
+    
+    <% @post.comments.each do |comment| %>
+      <p><%= simple_format(comment.body) %></p>
+        <small>
+          <p>by <%= comment.user.username %> at <time><%= comment.created_at.strftime("%H:%M on %d %B, %Y") %></time>
+          
+          <% if owner?(comment) %>
+             |
+            <%= link_to 'Erase', post_comment_path(@post, comment), method: :delete, data: {confirm: 'Are you sure?'} %>
+          <% end %>
+        </small>
+      </p>
+    <% end %>
+    <%= link_to "Add Comment", new_post_comment_path(post_id: @post.id) %>
+  <% end %>
+
   <!--/section>
 </article-->
