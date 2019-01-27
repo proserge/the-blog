@@ -3,7 +3,7 @@ class PostsController < ApplicationController
 
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
-  before_action :set_blog, only: [:index] #:new, :create, :index]
+  before_action :set_blog, only: [:index, :new] # :create, :index]
 
   def index
       #@posts = Post.where("blog_id = ?", params[:blog_id])
@@ -26,7 +26,6 @@ class PostsController < ApplicationController
   end
 
   def new
-    @blog = Blog.find(params[:blog_id])
     @post = Post.new
   end
 
@@ -67,7 +66,7 @@ class PostsController < ApplicationController
   end
 
   def set_blog
-    @blog = Blog.find(params[:blog_id])
+    @blog = Blog.find(current_user.blog.id)
   end
 
   def post_params

@@ -1,7 +1,7 @@
 <h1>Here is the few last posts</h1>
 <% @posts.each do |post| %> 
   <h2><%= link_to post.title, post_path(post) %></h2>
-  <p><%= post.body %></p>
+  <p><%= simple_format(post.body) %></p>
   <small>
     <time><%= post.created_at.to_date.strftime("%d %B, %Y") %></time>
     |
