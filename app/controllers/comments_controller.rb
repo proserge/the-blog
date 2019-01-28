@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   before_action :find_post!
+  before_action :find_comment!, only: [:edit, :update]
 
   def index
     @comments = @post.comments.order(created_at: desc)
@@ -22,6 +23,17 @@ class CommentsController < ApplicationController
     end
   end
 
+  def edit
+
+  end
+
+  def update
+    if @comment.update_attributes(comment_params)
+      redirect_to @post, success: 'The comment has been updated!'
+    else
+      render :edit, danger: 'The comment has not been updated!'
+    end
+  end
  
   def destroy
     @comment = @post.comments.find(params[:id])
@@ -38,6 +50,10 @@ class CommentsController < ApplicationController
 
   def find_post!
     @post = Post.find(params[:post_id])
+  end
+
+  def find_comment!
+    @comment = Comment.find(params[:id])
   end
 
   def comment_params

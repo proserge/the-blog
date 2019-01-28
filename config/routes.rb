@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   root 'home#index'
   resources :blogs #do
   resources :posts do #, shallow: true
-    resources :comments, only: [:new, :create, :index, :destroy]
+    resources :comments, except: [:show]
   end
 end
