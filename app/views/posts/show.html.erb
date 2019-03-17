@@ -16,6 +16,15 @@
   <p>
     <%= simple_format(@post.body) %>
   </p>
+  <p>
+    <%= "#{@post.likes.count} " + 'like'.pluralize(@post.likes.count) if @post.likes %>
+  </p>
+  <hr>
+  <% if user_signed_in? && @post.likes.find_by(user_id: current_user.id) %>
+    <%= button_to 'Unlike', post_like_path(@post, @post.likes.find_by(user_id: current_user.id)), method: :delete %>
+  <% else %>
+    <%= button_to 'Like', post_likes_path(@post), method: :post %>
+  <% end %>
   <hr>
   <%= link_to "Add Comment", new_post_comment_path(post_id: @post.id) %>
   <% if @post.comments.size != 0 %>

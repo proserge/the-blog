@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   resources :blogs #do
   resources :posts do #, shallow: true
     resources :comments, except: [:show]
+    resources :likes
   end
 end
