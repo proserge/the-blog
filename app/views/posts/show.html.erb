@@ -17,6 +17,9 @@
     <%= simple_format(@post.body) %>
   </p>
   <p>
+    <%= "#{@post.view_count} " + 'view'.pluralize(@post.view_count) %>
+  </p>
+  <p>
     <%= "#{@post.likes.count} " + 'like'.pluralize(@post.likes.count) if @post.likes %>
   </p>
   <hr>
